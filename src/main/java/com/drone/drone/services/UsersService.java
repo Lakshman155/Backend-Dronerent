@@ -1,15 +1,19 @@
 package com.drone.drone.services;
 
+//import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.drone.drone.repos.UserRepo;
+
+
+
+
 
 public class UsersService implements UserDetailsService{
-	
+
 	@Autowired
 	private MyUserDetailsService usedetailsservice;
 	
@@ -24,6 +28,10 @@ public class UsersService implements UserDetailsService{
 		
 		
 	}
+	
+	
+	    
+	
 
 	public UsersService() {
 		
@@ -33,3 +41,8 @@ public class UsersService implements UserDetailsService{
 	}
 
 }
+
+
+
+
+

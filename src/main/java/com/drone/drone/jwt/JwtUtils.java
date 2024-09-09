@@ -91,6 +91,7 @@ private Claims extractAllClaims(String token) {
 
   public boolean validateToken(String token, UserDetails userDetails) {
       final String userName = extractUsername(token);
+      System.out.print(userName.equals(userDetails.getUsername())+"here the details are verified");
       return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
   }
   

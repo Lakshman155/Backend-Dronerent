@@ -22,16 +22,25 @@ import java.util.Date;
 	    private int id;
 	    private Date rentDate;
 	    private Date returnDate;
+	    
 
-		    @ManyToOne
-		    @JoinColumn(name = "product_id", nullable = false)
+	    @ManyToOne
+		@JoinColumn(name = "product_id", nullable = false)
 	    private Product product;
 
 	    @ManyToOne
 	    @JoinColumn(name = "user_id", nullable = false)
 	    private Users user;
 
-	    // Getters and setters
+	    public Users getUser() {
+			return user;
+		}
+
+		public void setUser(Users user) {
+			this.user = user;
+		}
+
+		// Getters and setters
 	    public int getId() {
 	        return id;
 	    }
@@ -57,31 +66,35 @@ import java.util.Date;
 	    }
 
 	    public Product getProduct() {
-	        return product;
+	        return this.product;
 	    }
 
 	    public void setProduct(Product product) {
 	        this.product = product;
+	    	
 	    }
 
-		public Rentproducts(Date rentDate, Date returnDate, Product product) {
+		public Rentproducts(Date rentDate, Date returnDate,Product prodduct,Users user) {
 			super();
 			this.rentDate = rentDate;
 			this.returnDate = returnDate;
-			this.product = product;
+			this.product=product;
+			this.user=user;
 		}
+		
+		
+
+//		@Override
+//		public String toString() {
+//			return "Rentproducts [id=" + id + ", rentDate=" + rentDate + ", returnDate=" + returnDate + ", product="
+//					+ product + "]";
+//		}
+
 		public Rentproducts() {
 			
 		}
 		
 
-//	    public User getUser() {
-//	        return user;
-//	    }
-//
-//	    public void setUser(User user) {
-//	        this.user = user;
-//	    }
 	}
 
 	

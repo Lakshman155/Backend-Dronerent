@@ -19,6 +19,7 @@ public class Product {
 	private String url;
 	private float price;
 	private String description;
+	private int cap;
 	
 	
 	
@@ -85,19 +86,32 @@ public class Product {
 	
 	
 	
-	public Product(int id, String name, String url, float price, String description) {
+	public Product(String name,  float price, String description,String url,int cap) {
 		
-		this.id = id;
+//		this.id = id;
 		this.name = name;
 		this.url = url;
 		this.price = price;
 		this.description = description;
+		this.cap=cap;
 	}
 	
 	protected Product() {
 		
 		
 		
+	}
+
+
+
+	public int getCap() {
+		return cap;
+	}
+
+
+
+	public void setCap(int cap) {
+		this.cap = cap;
 	}
 	
 	

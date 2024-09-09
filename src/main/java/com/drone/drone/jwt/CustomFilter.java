@@ -45,6 +45,8 @@ public class CustomFilter extends OncePerRequestFilter{
 
 	        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 	            UserDetails userDetails = myuserdetails.loadUserByUsername(username);
+	            
+	            
 	            if (jwtutils.validateToken(token, userDetails)) {
 	                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 	                authToken.setDetails(new WebAuthenticationDetailsSource()

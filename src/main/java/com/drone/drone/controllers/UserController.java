@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -75,12 +76,24 @@ public class UserController {
 			return user.getEmail()+"Found";
 	}
 	
+	
+//	@GetMapping("/user-info")
+    public UserDetails getUserInfo(@AuthenticationPrincipal UserDetails userDetails) {
+    	
+    	
+        return userDetails;
+    }
+	
 	@PostMapping("/adduser")
 	public ResponseEntity<String> addUser(@RequestBody Users users){
+		
+		
+		
+		System.out.println("Added the user called"+users.getPassword()+users.getEmail());
 		users.setPassword(encoder.encode(users.getPassword()));
 		users.setCnfpswd(encoder.encode(users.getCnfpswd()));
 		
-		System.out.println("Added the user called");
+		
 		
 		
 		Users temp=userrepo.findByEmail(users.getEmail());
@@ -108,13 +121,13 @@ public class UserController {
 		
 		
 		
-		System.out.println("here all login is called");
+//		System.out.println("here all login is called");
 		Users other=userrepo.findByEmail(email);
 		
 		if (other!=null) {
 			
 			String token=jwtutils.generateToken(user.getEmail());
-			return ResponseEntity.ok("Login successful and the token is"+token);
+			return ResponseEntity.ok(token);
 			
 		}
 		

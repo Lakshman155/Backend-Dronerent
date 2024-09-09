@@ -52,10 +52,10 @@ private CustomFilter customfilter;
 		
 		 http
 	            .csrf(csrf -> csrf.disable()) 
-//	            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+	            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 	            .authorizeHttpRequests(authorize -> 
 	                authorize
-	                    .requestMatchers("/users/login","/users/adduser","/").permitAll()  
+	                    .requestMatchers("/users/login","/users/adduser","/products/getproducts","/").permitAll()  
 	                    .anyRequest().authenticated()                 
 	            )
 //	            .httpBasic(Customizer.withDefaults())
@@ -73,18 +73,18 @@ private CustomFilter customfilter;
 	
 	
 
-//	@Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Specify allowed origins
-//        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE")); // Specify allowed HTTP methods
-//        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Specify allowed headers
-//        configuration.setAllowCredentials(true); // Allow credentials
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
+	@Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:3000")); 
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE")); 
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); 
+        configuration.setAllowCredentials(true); // Allow credentials
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 	
 	
 	

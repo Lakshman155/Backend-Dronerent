@@ -91,7 +91,7 @@ public class Users {
 
 
 	public String getPhone() {
-		return phone;
+		return this.phone;
 	}
 
 
@@ -119,7 +119,7 @@ public class Users {
 
 
 	public String getCnfpswd() {
-		return cnfpswd;
+		return this.cnfpswd;
 	}
 
 
@@ -160,7 +160,7 @@ public class Users {
 
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 
